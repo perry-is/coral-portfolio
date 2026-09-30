@@ -101,4 +101,4 @@ tests/                 Standard-library tests using temporary databases
 
 ## Source and scope
 
-This folder has a fresh Git repository with no commit yet and no inherited history. The implementation is a new, narrow portfolio sample informed by selected design concepts from Coral Core; it does not include private identity/persona material, production databases, research artifacts, avatar assets, mobile integrations, or one-off operational scripts. See [`docs/source-review.md`](docs/source-review.md) for the file-by-file boundary.
+This repository was created with fresh Git history and no inherited development history. The implementation is a new, narrow portfolio sample informed by selected design concepts from Coral Core; it does not include private identity/persona material, production databases, research artifacts, avatar assets, mobile integrations, or one-off operational scripts. See [`docs/source-review.md`](docs/source-review.md) for the file-by-file boundary.
