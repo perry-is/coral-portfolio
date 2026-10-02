@@ -14,7 +14,7 @@ Coral started as a personal problem. My first attempt was a productivity app. It
 
 So Coral flips the relationship: **models are replaceable; the memory and the rules stay mine.** Most work runs on a local model. Cloud models are used only when the information involved is allowed to leave the machine. Every decision leaves a receipt.
 
-This repository is a small, runnable slice of that idea using fictional data. My private version holds real memory and connects to agent tools. Neither of those belongs on a public GitHub.
+This repository is a small, runnable slice of that idea using fictional data. My private development version holds real memory and includes experiments with bounded agent and tool execution. Real memory doesn't belong on a public GitHub, and the agent work isn't finished.
 
 ## See it work
 
@@ -99,6 +99,8 @@ With a real local model ([Ollama](https://ollama.com)):
 ollama pull qwen2.5:3b
 coral-demo --ollama --model qwen2.5:3b --ask "When is the quarterly review?"
 ```
+
+The Ollama client is covered by tests that mock the server. CI doesn't run a live model.
 
 Other flags: `--prefer local|cloud`, `--no-local` (simulate the local model being offline), `--disclosure`, `--budget`. Each run starts from the same fictional data.
 
