@@ -1,9 +1,10 @@
 flowchart LR
-    A[ synthetic user request ] --> B[ local SQLite memory ]
-    B --> C[ bounded context assembly ]
-    A --> C
-    C --> D[ fail-closed disclosure check ]
-    D -->|local-only| E[ local route metadata ]
-    D -->|cloud allowed| F[ eligible local or cloud route metadata ]
-    E --> G[ SQLite operation receipt ]
-    F --> G
+    Q[Request] --> R[Find relevant memories]
+    R --> C[Build bounded context]
+    C --> D{Privacy check on<br/>what would be sent}
+    D -->|cloud allowed| P[Preferred model:<br/>local or cloud]
+    D -->|local only| L[Local model only]
+    D -->|no eligible model| X[Deny - model never called]
+    P --> RC[(Receipt)]
+    L --> RC
+    X --> RC

@@ -1,10 +1,18 @@
-# Synthetic workflow example
+# Demo scenarios
 
-All values below are fictional and are also used by `src/coral_portfolio/demo.py`.
+All memories are fictional and live in `src/coral_portfolio/demo.py`.
 
-- Stored local memory: “The example team reviews its launch checklist every Thursday.”
-- User request: “When does the example team review its launch checklist?”
-- Context assembly: includes the request and retrieved memory, subject to a character budget.
-- Disclosure check: `cloud_allowed` permits either configured route; `local_only` permits only local.
-- Route: provider metadata selects an eligible route. The demo does not invoke either provider.
-- Receipt: SQLite stores the selected provider, disclosure class, policy version, source reference, and context digest. It does not store the request, memory text, or model output.
+| Memory | Label |
+|---|---|
+| The team reviews its launch checklist every Thursday at 10am. | `cloud_allowed` |
+| The team orders packaging from Northwind Supply. | `cloud_allowed` |
+| The team lead is negotiating a raise and wants that kept private. | `local_only` |
+| The quarterly review moved to the last Friday of the month. | *(never labeled)* |
+
+| Command | What happens |
+|---|---|
+| `coral-demo --prefer cloud --ask "Who supplies our packaging?"` | Only the public memory is retrieved, so the preferred cloud route is allowed. |
+| `coral-demo --prefer cloud --ask "Is the team lead negotiating a raise?"` | The private memory is retrieved, so the request is forced local. |
+| `coral-demo --ask "When is the quarterly review?"` | The unlabeled memory is treated as private, so the request stays local. |
+| `coral-demo --no-local --ask "Is the team lead negotiating a raise?"` | Nothing is eligible, so the request is denied, no model is called, and a receipt is still written. |
+| `coral-demo --ask "What's the weather?"` | No memory is relevant, so nothing private enters the context. |
