@@ -3,7 +3,7 @@
     coral-demo                                    # mock model, no setup needed
     coral-demo --ask "Who is the team lead negotiating with?"   # sensitive memory -> local only
     coral-demo --ask "..." --no-local             # local model offline -> denied, receipt still written
-    coral-demo --ollama --model qwen2.5:3b        # real answer from your local Ollama
+    coral-demo --ollama --model qwen3.5:9b        # real answer from your local Ollama
 """
 
 from __future__ import annotations
@@ -36,7 +36,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--no-local", action="store_true", help="simulate the local model being offline")
     parser.add_argument("--ollama", action="store_true", help="answer with a real local Ollama model")
     parser.add_argument("--ollama-url", default="http://localhost:11434")
-    parser.add_argument("--model", default="qwen2.5:3b", help="local model name")
+    parser.add_argument("--model", default="qwen3.5:9b", help="local model name")
     return parser
 
 

@@ -150,10 +150,10 @@ class OllamaTests(unittest.TestCase):
         response = mock.MagicMock()
         response.__enter__.return_value.read.return_value = b'{"response": " Thursday. "}'
         with mock.patch("urllib.request.urlopen", return_value=response) as urlopen:
-            answer = OllamaModel("http://localhost:11434").complete("qwen2.5:3b", "hello")
+            answer = OllamaModel("http://localhost:11434").complete("qwen3.5:9b", "hello")
         request = urlopen.call_args.args[0]
         self.assertEqual(request.full_url, "http://localhost:11434/api/generate")
-        self.assertEqual(json.loads(request.data), {"model": "qwen2.5:3b", "prompt": "hello", "stream": False})
+        self.assertEqual(json.loads(request.data), {"model": "qwen3.5:9b", "prompt": "hello", "stream": False})
         self.assertEqual(answer, "Thursday.")
 
     def test_unreachable_server_raises_model_unavailable(self) -> None:

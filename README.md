@@ -96,11 +96,11 @@ python -m unittest discover -s tests -v
 With a real local model ([Ollama](https://ollama.com)):
 
 ```bash
-ollama pull qwen2.5:3b
-coral-demo --ollama --model qwen2.5:3b --ask "When is the quarterly review?"
+ollama pull qwen3.5:9b
+coral-demo --ollama --model qwen3.5:9b --ask "When is the quarterly review?"
 ```
 
-The Ollama client is covered by tests that mock the server. CI doesn't run a live model.
+The Ollama path was smoke-tested on my machine with `qwen3.5:9b` using the fictional demo memories. It answered from the right memory, the receipt held only references and hashes, and the `--no-local` run was denied without calling a model. CI uses mocked tests and doesn't run a live model.
 
 Other flags: `--prefer local|cloud`, `--no-local` (simulate the local model being offline), `--disclosure`, `--budget`. Each run starts from the same fictional data.
 
