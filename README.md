@@ -120,3 +120,7 @@ The cloud route here is a placeholder on purpose: the demo never sends anything 
 ---
 
 Built by [Michael Perry](https://perry.is). I design the system, specify the behavior and tests, and direct AI coding agents to implement it, then review and verify the result with a second model. [More of my work →](https://github.com/perry-is)
+
+## License
+
+Copyright © 2026 Michael Perry. All rights reserved. This code is shared for portfolio review only and may not be copied, modified, or reused without written permission. See [LICENSE](LICENSE).
